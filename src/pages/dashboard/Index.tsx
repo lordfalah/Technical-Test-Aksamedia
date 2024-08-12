@@ -11,6 +11,7 @@ import useDashboard from "../../hooks/useDashboard";
 import TablePeople from "../../components/tables/TablePeople";
 import Plus from "../../components/icons/Plus";
 import ClipboardList from "../../components/icons/ClipboardList";
+import { useNavigate } from "react-router-dom";
 
 const PageSize = 10;
 
@@ -28,6 +29,7 @@ const PageDashboard = () => {
   const [openAdd, setOpenAdd] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
   const [openEdit, setOpenEdit] = useState(false);
+  const navigate = useNavigate();
 
   const handleDelete = () => {
     const findPeople = currentTableData.find(
@@ -46,7 +48,7 @@ const PageDashboard = () => {
 
   const handleGenerateData = () => {
     setPeople({ email: "", id: "", name: "", role: "" }, "GENERATE");
-    window.location.reload();
+    navigate("/");
   };
 
   return (

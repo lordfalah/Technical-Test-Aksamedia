@@ -1,5 +1,6 @@
 import { isRouteErrorResponse, useRouteError } from "react-router-dom";
 import Error404 from "../Errors/Error404";
+import NoDataAvailable from "../Errors/NoDataAvailable";
 
 export default function RootErrorBoundary() {
   const error = useRouteError();
@@ -22,5 +23,11 @@ export default function RootErrorBoundary() {
     }
   }
 
-  return <div>Something went wrong</div>;
+  return (
+    <NoDataAvailable
+      isError={true}
+      className="grid h-screen place-content-center bg-white px-4 dark:bg-gray-900"
+      message="Something went wrong"
+    />
+  );
 }

@@ -99,7 +99,11 @@ const TablePeople: React.FC<TTablePeople> = ({
           </table>
         </div>
       ) : (
-        <NoDataAvailable className="px-4 pt-10 sm:pt-40" />
+        <NoDataAvailable
+          isError={false}
+          message="Eata is empty, you can add manually or you can also press the generate data button"
+          className="px-4 pt-10 sm:pt-40"
+        />
       )}
     </Fragment>
   );

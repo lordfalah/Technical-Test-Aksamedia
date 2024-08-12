@@ -10,6 +10,7 @@ import Pagination from "../../components/Pagination";
 import useDashboard from "../../hooks/useDashboard";
 import TablePeople from "../../components/tables/TablePeople";
 import Plus from "../../components/icons/Plus";
+import ClipboardList from "../../components/icons/ClipboardList";
 
 const PageSize = 10;
 
@@ -41,6 +42,11 @@ const PageDashboard = () => {
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
+  };
+
+  const handleGenerateData = () => {
+    setPeople({ email: "", id: "", name: "", role: "" }, "GENERATE");
+    window.location.reload();
   };
 
   return (
@@ -99,16 +105,29 @@ const PageDashboard = () => {
         <div className="flex items-center justify-between gap-x-5">
           <Search value={searchTerm} onChange={handleSearchChange} />
 
-          <button
-            onClick={() => setOpenAdd(true)}
-            type="button"
-            className="rounded-full bg-blue-500 p-2 font-medium text-white sm:rounded-md sm:px-3 sm:py-2"
-          >
-            <div className="flex gap-2">
-              <Plus className="sm:stroke-1.5 size-5 stroke-2 sm:size-6" />
-              <span className="hidden sm:block">Add Data</span>
-            </div>
-          </button>
+          <div className="flex items-center gap-2.5">
+            <button
+              onClick={handleGenerateData}
+              type="button"
+              className="rounded-full bg-red-500 p-2 font-medium text-white sm:rounded-md sm:px-3 sm:py-2"
+            >
+              <div className="flex gap-2">
+                <ClipboardList className="sm:stroke-1.5 size-5 stroke-2 sm:size-6" />
+                <span className="hidden sm:block">Generate Data</span>
+              </div>
+            </button>
+
+            <button
+              onClick={() => setOpenAdd(true)}
+              type="button"
+              className="rounded-full bg-blue-500 p-2 font-medium text-white sm:rounded-md sm:px-3 sm:py-2"
+            >
+              <div className="flex gap-2">
+                <Plus className="sm:stroke-1.5 size-5 stroke-2 sm:size-6" />
+                <span className="hidden sm:block">Add Data</span>
+              </div>
+            </button>
+          </div>
         </div>
 
         <TablePeople

@@ -1,8 +1,9 @@
 import { TPeople } from "../types/people.type";
+import MockData from "../data/mock-data.json";
 
 export function setPeople(
   values: TPeople,
-  action: "ADD" | "UPDATE" | "DELETE",
+  action: "ADD" | "UPDATE" | "DELETE" | "GENERATE",
 ) {
   const existingPeople = JSON.parse(
     localStorage.getItem("people") || "[]",
@@ -28,6 +29,11 @@ export function setPeople(
       updatedPeople = existingPeople.filter(
         (person) => person.id !== values.id,
       );
+      break;
+
+    case "GENERATE":
+      // Remove the person from the existing array
+      updatedPeople = MockData;
       break;
   }
 

@@ -1,7 +1,16 @@
 import React from "react";
+import Reload from "../icons/Reload";
 
-const NoDataAvailable: React.FC<{ className?: string }> = ({
+type TDataAvailable = {
+  className?: string;
+  message: string;
+  isError: boolean;
+};
+
+const NoDataAvailable: React.FC<TDataAvailable> = ({
   className = "",
+  message,
+  isError,
 }) => {
   return (
     <div className={className}>
@@ -29,9 +38,14 @@ const NoDataAvailable: React.FC<{ className?: string }> = ({
           Uh-oh!
         </h1>
 
-        <p className="mt-4 text-gray-500 dark:text-gray-400">
-          We can't find that page.
-        </p>
+        <div className="space-y-2">
+          <p className="mt-4 text-gray-500 dark:text-gray-400">{message}</p>
+          {isError && (
+            <button type="button" onClick={() => window.location.reload()}>
+              <Reload className="size-8 stroke-red-600" />
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );

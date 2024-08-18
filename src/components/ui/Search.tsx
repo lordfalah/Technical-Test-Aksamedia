@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useId } from "react";
 
 type TSearch = {
   value: string;
@@ -6,9 +6,11 @@ type TSearch = {
 };
 
 const Search: React.FC<TSearch> = ({ onChange, value }) => {
+  const uniqId = useId();
+
   return (
     <div className="relative">
-      <label htmlFor="Search" className="sr-only">
+      <label htmlFor={uniqId} className="sr-only">
         Search
       </label>
 
@@ -16,7 +18,7 @@ const Search: React.FC<TSearch> = ({ onChange, value }) => {
         value={value}
         onChange={onChange}
         type="search"
-        id="Search"
+        id={uniqId}
         placeholder="Search name"
         className="w-full rounded-md border-gray-200 py-2.5 pe-10 shadow-sm dark:border-gray-900 dark:bg-gray-900 dark:text-white"
         autoComplete="off"

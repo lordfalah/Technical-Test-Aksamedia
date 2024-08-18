@@ -1,9 +1,9 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import RootErrorBoundary from "./components/ui/ErrorBoundary.tsx";
+import RootErrorBoundary from "./components/Errors/ErrorBoundary.tsx";
 import PageLogin from "./pages/Login.tsx";
-import RootLayout from "./components/RootLayout.tsx";
+import RootLayout from "./pages/RootLayout.tsx";
 import PageDashboard from "./pages/dashboard/Index.tsx";
 import "./index.css";
 import PageProfile from "./pages/dashboard/Profile.tsx";

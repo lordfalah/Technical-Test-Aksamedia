@@ -1,7 +1,7 @@
-import { usePagination, DOTS } from "../hooks/usePagination";
+import { usePagination, DOTS } from "../../hooks/usePagination";
 import { useNavigate } from "react-router-dom";
-import ChevrontLeft from "./icons/chevron/Left";
-import ChevrontRight from "./icons/chevron/Right";
+import ChevrontLeft from "../icons/chevron/Left";
+import ChevrontRight from "../icons/chevron/Right";
 
 type TPagination = {
   onPageChange: (page: number) => void;

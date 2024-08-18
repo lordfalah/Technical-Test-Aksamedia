@@ -1,5 +1,5 @@
 import React, { useState, useSyncExternalStore } from "react";
-import TextInput from "../../components/forms/TextInput";
+import TextInput from "../../components/ui/TextInput";
 import User from "../../components/icons/User";
 import { setAuthUser, storeAuth } from "../../store/authStore";
 import { TUser } from "../../types/user.type";
@@ -15,7 +15,11 @@ const PageProfile = () => {
     password,
     email,
     name: userName,
-  }: TUser = JSON.parse(userLocalStorage);
+  }: TUser = JSON.parse(userLocalStorage) || {
+    password: "user",
+    email: "user@gmail.com",
+    name: "user",
+  };
 
   const onSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

@@ -1,7 +1,7 @@
 import React, { memo, useState } from "react";
 import { TPeople } from "../../types/people.type";
 import { setPeople } from "../../store/peopleStore";
-import TextInput from "./TextInput";
+import TextInput from "../ui/TextInput";
 
 type TFormAdd = {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;

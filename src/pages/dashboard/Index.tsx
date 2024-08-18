@@ -6,7 +6,7 @@ import { setPeople } from "../../store/peopleStore";
 import FormAdd from "../../components/forms/FormAdd";
 import FormEdit from "../../components/forms/FormEdit";
 import { useSearchParam } from "../../hooks/useSearchParam";
-import Pagination from "../../components/Pagination";
+import Pagination from "../../components/ui/Pagination";
 import useFilterData from "../../hooks/useFilterData";
 import TablePeople from "../../components/tables/TablePeople";
 import Plus from "../../components/icons/Plus";

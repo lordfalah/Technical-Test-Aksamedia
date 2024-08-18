@@ -2,7 +2,7 @@ import React, { useEffect, useState, useSyncExternalStore } from "react";
 import { TPeople } from "../../types/people.type";
 import { setPeople, storePeople } from "../../store/peopleStore";
 import { useSearchParam } from "../../hooks/useSearchParam";
-import TextInput from "./TextInput";
+import TextInput from "../ui/TextInput";
 
 type TFormEdit = {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;

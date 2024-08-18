@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { TUser } from "../types/user.type";
 import { setAuthUser } from "../store/authStore";
-import TextInput from "../components/forms/TextInput";
+import TextInput from "../components/ui/TextInput";
 import AtSymbol from "../components/icons/AtSymbol";
 import Eye from "../components/icons/Eye";
 import User from "../components/icons/User";
-import SwitchTheme from "../components/SwitchTheme";
+import SwitchTheme from "../components/ui/SwitchTheme";
 
 const PageLogin = () => {
   const [forms, setForms] = useState<TUser>({

@@ -1,5 +1,5 @@
 import { memo, useEffect, useState } from "react";
-import { setTheme, useThemeDetector } from "../hooks/useThemeDetector";
+import { setTheme, useThemeDetector } from "../../hooks/useThemeDetector";
 
 const SwitchTheme = memo(() => {
   const theme = useThemeDetector();
@@ -7,10 +7,12 @@ const SwitchTheme = memo(() => {
 
   useEffect(() => {
     setIsChecked(theme === "dark");
+    document.documentElement.classList.toggle("dark", theme === "dark");
   }, [theme]);
 
   const toggleSwitch = () => {
     const newTheme = !isChecked ? "dark" : "light";
+
     setTheme(newTheme);
     setIsChecked(!isChecked);
   };

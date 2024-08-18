@@ -4,7 +4,7 @@ import { setAuthUser, storeAuth } from "../../store/authStore";
 import { Link } from "react-router-dom";
 import { TUser } from "../../types/user.type";
 import SignOut from "../icons/SignOut";
-import SwitchTheme from "../SwitchTheme";
+import SwitchTheme from "./SwitchTheme";
 
 const Navbar = () => {
   const userLocalStorage = useSyncExternalStore(
@@ -12,7 +12,10 @@ const Navbar = () => {
     storeAuth.getSnapshot,
   );
 
-  const { name, email }: TUser = JSON.parse(userLocalStorage);
+  const { name, email }: TUser = JSON.parse(userLocalStorage) || {
+    name: "user",
+    email: "user@gmail.com",
+  };
 
   const [isOpen, setIsOpen] = useState(false);
   const onLogout = () => {

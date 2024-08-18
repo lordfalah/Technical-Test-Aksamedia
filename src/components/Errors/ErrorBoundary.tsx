@@ -1,6 +1,6 @@
 import { isRouteErrorResponse, useRouteError } from "react-router-dom";
-import Error404 from "../Errors/Error404";
-import NoDataAvailable from "../Errors/NoDataAvailable";
+import Error404 from "./Error404";
+import NoDataAvailable from "./NoDataAvailable";
 
 export default function RootErrorBoundary() {
   const error = useRouteError();

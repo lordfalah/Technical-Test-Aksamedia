@@ -1,8 +1,8 @@
 import { Fragment, useEffect, useState, useSyncExternalStore } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { storeAuth } from "../store/authStore";
-import Navbar from "./ui/Navbar";
-import Footer from "./ui/Footer";
+import Navbar from "../components/ui/Navbar";
+import Footer from "../components/ui/Footer";
 import { useThemeDetector } from "../hooks/useThemeDetector";
 
 const RootLayout = () => {

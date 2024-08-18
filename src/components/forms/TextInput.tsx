@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useId } from "react";
 
 type TTextInput = React.ComponentProps<"input"> & {
   value: string;
@@ -16,9 +16,11 @@ const TextInput: React.FC<TTextInput> = ({
   className = "text-class",
   ...props
 }) => {
+  const uniqId = useId();
+
   return (
     <label
-      htmlFor={label}
+      htmlFor={uniqId}
       className={`relative block rounded-md border border-gray-200 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600 ${className}`}
     >
       {icon && icon}
@@ -29,7 +31,7 @@ const TextInput: React.FC<TTextInput> = ({
         required
         onChange={onChange}
         value={value}
-        id={label}
+        id={uniqId}
         name={label}
         className="peer border-none bg-transparent text-black placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 dark:text-white"
         placeholder={label}

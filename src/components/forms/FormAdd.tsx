@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import { TPeople } from "../../types/people.type";
 import { setPeople } from "../../store/peopleStore";
 import TextInput from "./TextInput";
@@ -7,7 +7,7 @@ type TFormAdd = {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const FormAdd: React.FC<TFormAdd> = ({ setOpen }) => {
+const FormAdd: React.FC<TFormAdd> = memo(({ setOpen }) => {
   const uuid = crypto.randomUUID();
   const [forms, setForms] = useState<TPeople>({
     email: "",
@@ -77,6 +77,6 @@ const FormAdd: React.FC<TFormAdd> = ({ setOpen }) => {
       </div>
     </form>
   );
-};
+});
 
 export default FormAdd;

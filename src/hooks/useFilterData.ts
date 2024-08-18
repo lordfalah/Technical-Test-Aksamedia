@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { storePeople } from "../store/peopleStore";
 import { TPeople } from "../types/people.type";
 
-const useDashboard = () => {
+const useFilterData = (PageSize: number) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchTerm, setSearchTerm] = useState<string>(
     searchParams.get("search") || "",
@@ -37,7 +37,6 @@ const useDashboard = () => {
   }, [searchTerm, peoples]);
 
   const currentTableData = useMemo(() => {
-    const PageSize = 10;
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
     const dataForCurrentPage = peoples.slice(firstPageIndex, lastPageIndex);
@@ -46,7 +45,7 @@ const useDashboard = () => {
     return dataForCurrentPage.filter((person) =>
       person.name.toLowerCase().includes(searchTerm.toLowerCase()),
     );
-  }, [currentPage, searchTerm, peoples]);
+  }, [currentPage, searchTerm, peoples, PageSize]);
 
   return {
     searchTerm,
@@ -58,4 +57,4 @@ const useDashboard = () => {
   };
 };
 
-export default useDashboard;
+export default useFilterData;

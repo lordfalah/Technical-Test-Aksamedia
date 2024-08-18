@@ -7,7 +7,7 @@ import FormAdd from "../../components/forms/FormAdd";
 import FormEdit from "../../components/forms/FormEdit";
 import { useSearchParam } from "../../hooks/useSearchParam";
 import Pagination from "../../components/Pagination";
-import useDashboard from "../../hooks/useDashboard";
+import useFilterData from "../../hooks/useFilterData";
 import TablePeople from "../../components/tables/TablePeople";
 import Plus from "../../components/icons/Plus";
 import ClipboardList from "../../components/icons/ClipboardList";
@@ -22,7 +22,7 @@ const PageDashboard = () => {
     setCurrentPage,
     filteredPeople,
     currentTableData,
-  } = useDashboard();
+  } = useFilterData(PageSize);
   const { removeParam, getParam } = useSearchParam("id");
 
   const [openAdd, setOpenAdd] = useState(false);
@@ -137,13 +137,15 @@ const PageDashboard = () => {
           setOpenEdit={setOpenEdit}
         />
 
-        <Pagination
-          className="-mx-4 flex items-center justify-center sm:mx-0 sm:justify-end"
-          currentPage={currentPage}
-          totalCount={filteredPeople.length}
-          pageSize={PageSize}
-          onPageChange={(page) => setCurrentPage(page)}
-        />
+        {!searchTerm && (
+          <Pagination
+            className="-mx-4 flex items-center justify-center sm:mx-0 sm:justify-end"
+            currentPage={currentPage}
+            totalCount={filteredPeople.length}
+            pageSize={PageSize}
+            onPageChange={(page) => setCurrentPage(page)}
+          />
+        )}
       </section>
     </Fragment>
   );

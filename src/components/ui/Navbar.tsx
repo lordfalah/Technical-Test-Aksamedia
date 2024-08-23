@@ -1,18 +1,13 @@
-import { useState, useSyncExternalStore } from "react";
+import { useState } from "react";
 import Dropdown from "./Dropdown";
-import { setAuthUser, storeAuth } from "../../store/authStore";
+import { setAuthUser, useStoreAuth } from "../../store/authStore";
 import { Link } from "react-router-dom";
 import { TUser } from "../../types/user.type";
 import SignOut from "../icons/SignOut";
 import SwitchTheme from "./SwitchTheme";
 
 const Navbar = () => {
-  const userLocalStorage = useSyncExternalStore(
-    storeAuth.subscribe,
-    storeAuth.getSnapshot,
-  );
-
-  const { name, email }: TUser = JSON.parse(userLocalStorage) || {
+  const { name, email }: TUser = JSON.parse(useStoreAuth()) || {
     name: "user",
     email: "user@gmail.com",
   };

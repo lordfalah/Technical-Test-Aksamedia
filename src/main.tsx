@@ -7,6 +7,7 @@ import RootLayout from "./pages/RootLayout.tsx";
 import PageDashboard from "./pages/dashboard/Index.tsx";
 import "./index.css";
 import PageProfile from "./pages/dashboard/Profile.tsx";
+import ProtectedRoute from "./components/ProtectedRoute.tsx";
 
 const router = createBrowserRouter([
   {
@@ -23,11 +24,12 @@ const router = createBrowserRouter([
       },
 
       {
-        id: "dashboard",
+        id: "parent_dashboard",
         path: "/dashboard",
+        element: <ProtectedRoute />,
         children: [
           {
-            id: "root_dashboard",
+            id: "dashboard",
             index: true,
             element: <PageDashboard />,
           },

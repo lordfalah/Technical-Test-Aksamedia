@@ -6,6 +6,7 @@ import AtSymbol from "../components/icons/AtSymbol";
 import Eye from "../components/icons/Eye";
 import User from "../components/icons/User";
 import SwitchTheme from "../components/ui/SwitchTheme";
+import { useNavigate } from "react-router-dom";
 
 const PageLogin = () => {
   const [forms, setForms] = useState<TUser>({
@@ -14,13 +15,21 @@ const PageLogin = () => {
     name: "",
   });
 
-  const onSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setAuthUser(forms);
-  };
+  const navigate = useNavigate();
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForms((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const isFormInvalid = !forms.email || !forms.name || !forms.password;
+
+  const onSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!isFormInvalid) {
+      setAuthUser(forms);
+      navigate("/dashboard");
+    }
   };
 
   return (
@@ -103,8 +112,9 @@ const PageLogin = () => {
             </div>
 
             <button
+              disabled={isFormInvalid}
               type="submit"
-              className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"
+              className={`block w-full rounded-lg px-5 py-3 text-sm font-medium text-white ${isFormInvalid ? "cursor-not-allowed bg-indigo-600/30" : "cursor-pointer bg-indigo-600"}`}
             >
               Sign in
             </button>

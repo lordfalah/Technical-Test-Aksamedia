@@ -1,3 +1,4 @@
+import { useSyncExternalStore } from "react";
 import { TUser } from "../types/user.type";
 
 export function setAuthUser(values: TUser | null) {
@@ -19,6 +20,9 @@ export const storeAuth = {
     return () => void window.removeEventListener("storage", listener);
   },
 };
+
+export const useStoreAuth = () =>
+  useSyncExternalStore(storeAuth.subscribe, storeAuth.getSnapshot);
 
 if (storeAuth.getSnapshot() === "null") {
   localStorage.setItem("user", "null");

@@ -8,6 +8,7 @@ import PageDashboard from "./pages/dashboard/Index.tsx";
 import "./index.css";
 import PageProfile from "./pages/dashboard/Profile.tsx";
 import ProtectedRoute from "./components/ProtectedRoute.tsx";
+import PublicRoute from "./components/PublicRoute.tsx";
 
 const router = createBrowserRouter([
   {
@@ -20,7 +21,11 @@ const router = createBrowserRouter([
       {
         id: "login",
         index: true,
-        element: <PageLogin />,
+        element: (
+          <PublicRoute>
+            <PageLogin />
+          </PublicRoute>
+        ),
       },
 
       {
